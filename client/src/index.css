@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: "Poppins", sans-serif;
+  color: #294665;
+}
+
+nav a.active {
+  position: relative;
+  text-decoration: none;
+}
+nav a.active.sign_in {
+  display: none;
+}
+nav a.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.15rem;
+  background: #fc7d67;
+  bottom: 0;
+  left: 0;
+}
+nav a {
+  text-decoration: none;
+  color: #294665;
+}
+.col.btn:hover {
+  scale: 1.03;
+}
+
+.profile-head {
+  transform: translateY(5rem);
+}
+.cover {
+  /* background-color: #fc7d67; */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.circular--square--left {
+  border-radius: 100%;
+
+  /* border-top-left-radius: 0% 0%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 0% 0%; */
+}
+.circular--square--right {
+  border-radius: 100%;
+  /* border-top-left-radius: 50% 50%;
+  border-top-right-radius: 50% 50%;
+  border-bottom-right-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%; */
+}
+/* .card {
+  background-image: url(./assets/images/bg-card.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+} */
+.footer-16371 .footer-site-logo {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+}
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  justify-items: center;
+}
+.list-unstyled a {
+  text-decoration: none;
+  color: #294665;
+}

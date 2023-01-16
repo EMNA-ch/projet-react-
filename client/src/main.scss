@@ -1,0 +1,9 @@
+// Variable overrides first
+$danger: #fc7d67;
+$info: #00b3a0;
+$dark: #294665;
+
+// $enable-shadows: true;
+// $prefix: "mo-";
+// Then import Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
