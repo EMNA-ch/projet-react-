@@ -23,7 +23,6 @@ router.post("/", verifyAuth, postRules(), validatorPost, createPost);
 router.get("/", getAllPosts);
 // get all posts in a user profile
 router.get("/profile/:id", getUserPosts);
-
 router.get("/:id", getOnePost);
 router.put("/:id", verifyAuth, updatePost);
 router.delete("/:id", verifyAuth, deletePost);

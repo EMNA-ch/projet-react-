@@ -33,6 +33,7 @@ nav a {
 }
 .col.btn:hover {
   scale: 1.03;
+  transition: all 0.5s ease-out;
 }
 
 .profile-head {
@@ -86,4 +87,8 @@ nav a {
   object-fit: none;
   padding: 25px;
   border-radius: 50%;
+}
+.title {
+  background-color: rgb(240, 237, 237);
+  border-radius: 30px;
 }

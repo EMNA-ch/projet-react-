@@ -110,3 +110,27 @@ exports.getVisitedProfile = async (req, res) => {
     res.status(500).json({ msg: error.message });
   }
 };
+
+exports.updateProfile = async (req, res) => {
+  try {
+    const userProfile = await User.findByIdAndUpdate(
+      req.params.id,
+      { ...req.body },
+      { new: true }
+    );
+
+    if (userProfile.id !== req.user.id) {
+      return res.status(401).json({ msg: "user not authorized" });
+    }
+    // await userProfile.save();
+    res.send({
+      id: userProfile._id,
+      name: userProfile.name,
+      email: userProfile.email,
+    });
+    // id: userProfile._id,
+    // name: userProfile.name,
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

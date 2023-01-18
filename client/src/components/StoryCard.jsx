@@ -2,7 +2,7 @@ import React from "react";
 import location1 from "../assets/images/location1.png";
 import sfax from "../assets/images/sfax.jpg";
 
-const StoryCard = ({ index }) => {
+const StoryCard = ({ index, post }) => {
   return (
     <div className="row mb-1">
       <div className="col img-border py-3">

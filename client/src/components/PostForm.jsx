@@ -30,7 +30,7 @@ const PostForm = () => {
   const [newPlace, setNewPlace] = useState(initialState);
   // console.log(places);
   // console.log(newPlace);
-  console.log("image", image);
+  // console.log("image", image);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleAdd = (e) => {

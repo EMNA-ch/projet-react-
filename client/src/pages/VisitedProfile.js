@@ -26,7 +26,7 @@ const VisitedProfile = () => {
     <div>
       <section className="container vh-100">
         <NavBar color="white" />
-        {params.id === user.id ? (
+        {params.id === user?.id ? (
           <Navigate to={`/profile/${params.id}`} />
         ) : (
           <div className="row py-5 px-4 ">

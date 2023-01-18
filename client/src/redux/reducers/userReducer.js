@@ -9,6 +9,9 @@ import {
   REGISTER,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
+  UPDATE_PROFILE,
+  UPDATE_PROFILE_FAIL,
+  UPDATE_PROFILE_SUCCESS,
   VERIFY_LOGIN,
   VERIFY_LOGIN_SUCCESS,
 } from "../actionTypes";
@@ -84,6 +87,24 @@ const userReducer = (state = initialState, { type, payload }) => {
         user: null,
         loading: false,
         errors: payload,
+      };
+    case UPDATE_PROFILE:
+      return {
+        ...state,
+        loading: true,
+      };
+    case UPDATE_PROFILE_SUCCESS:
+      return {
+        ...state,
+        user: payload,
+        loading: false,
+        errors: null,
+      };
+    case UPDATE_PROFILE_FAIL:
+      return {
+        ...state,
+        errors: payload,
+        loading: false,
       };
 
     default:

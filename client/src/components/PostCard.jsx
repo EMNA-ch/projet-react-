@@ -64,7 +64,7 @@ const PostCard = ({ post, authorID }) => {
         </div>
         <div className="col-md-4">
           <div className="card-body body">
-            <div className="card-title">{post.title}</div>
+            <div className="title card-title fs-4 fw-bold">{post.title}</div>
             <p className="card-text">{post.description}</p>
             <div className="d-flex justify-content-center align-items-center"></div>
           </div>

@@ -9,6 +9,9 @@ import {
   REGISTER,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
+  UPDATE_PROFILE,
+  UPDATE_PROFILE_FAIL,
+  UPDATE_PROFILE_SUCCESS,
 } from "../actionTypes";
 import axios from "axios";
 
@@ -76,6 +79,36 @@ export const getVisitedUser = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: GET_VISITED_PROFILE_FAIL,
+      payload: error.response.data,
+    });
+  }
+};
+
+export const updateProfile = (updatedProfile, id) => async (dispatch) => {
+  const token = localStorage.getItem("token");
+  // console.log(token);
+  const config = {
+    headers: {
+      Authorization: token,
+    },
+  };
+  dispatch({
+    type: UPDATE_PROFILE,
+  });
+  try {
+    const res = await axios.put(
+      `/api/userProfile/${id}`,
+      updatedProfile,
+      config
+    );
+    console.log(res.data);
+    dispatch({
+      type: UPDATE_PROFILE_SUCCESS,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PROFILE_FAIL,
       payload: error.response.data,
     });
   }

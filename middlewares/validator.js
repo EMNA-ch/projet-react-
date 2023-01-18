@@ -7,6 +7,10 @@ exports.registerRules = () => [
     min: 6,
   }),
 ];
+exports.updateRules = () => [
+  check("name", "Name is required").notEmpty(),
+  check("email", "Email requires a valid email").isEmail(),
+];
 
 exports.validator = (req, res, next) => {
   const errors = validationResult(req);
