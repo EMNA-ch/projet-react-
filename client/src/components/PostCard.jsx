@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import sfax from "../assets/images/sfax.jpg";
 import avatar from "../assets/images/avatar.png";
 import { deletePost } from "../redux/actions/postActions";
 import UpdateForm from "./UpdateForm";
@@ -48,49 +47,61 @@ const PostCard = ({ post, authorID }) => {
           ></i>
         )}
       </div>
-      <div className="card-title">{post.title}</div>
       <div className="card-body row">
-        <div className="col-md-4">
-          <img
-            src={sfax}
-            className="img-fluid circular--square--left"
-            alt="..."
-          />
+        <div className="col-md-4 img-border">
+          <div className="col">
+            <img
+              className="shadow p-2 bg-body-tertiary"
+              src="/static/media/sfax.804867dda61a46ed4b8a.jpg"
+              width="200"
+              height="200"
+              alt="..."
+            />
+          </div>
           <div className="card-footer mt-3 bg-white">
             From: {post?.location}
           </div>
         </div>
         <div className="col-md-4">
           <div className="card-body body">
+            <div className="card-title">{post.title}</div>
             <p className="card-text">{post.description}</p>
             <div className="d-flex justify-content-center align-items-center"></div>
           </div>
         </div>
 
-        <div className="col-md-4">
+        <div className="col-md-4 img-border">
           {isAuth && (
             <div>
               <UpdateForm post={post} show={show} setShow={setShow} />
             </div>
           )}
-          <img
-            src={sfax}
-            className="img-fluid circular--square--right "
-            alt="..."
-          />
+
+          <div className="col">
+            <img
+              className="shadow p-2 bg-body-tertiary"
+              src="/static/media/sfax.804867dda61a46ed4b8a.jpg"
+              // src={post?.places[post?.places?.length - 1]?.image}
+              width="200"
+              height="200"
+              alt="..."
+            />
+          </div>
           <div className="card-footer mt-3 bg-white">
-            To: {post?.destination}
+            To: {post?.places[post?.places?.length - 1]?.place}
           </div>
         </div>
       </div>
       <div className="card-footer d-flex justify-content-between align-items-center">
-        <small className="text-muted">{postTime}</small>
+        <small className="text-muted">created at: {postTime}</small>
         <Link to={`/posts/${post._id}`}>
           <button className="btn btn-outline-info">
-            Read more <i class="bi bi-arrow-right-circle-fill"></i>
+            Read more <i className="bi bi-arrow-right-circle-fill"></i>
           </button>
         </Link>
-        <small className="text-muted">X comments</small>
+        <small className="text-muted">
+          {post.comments.usercomments.length} comments
+        </small>
       </div>
     </div>
   );

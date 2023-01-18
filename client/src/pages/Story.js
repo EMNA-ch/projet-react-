@@ -5,6 +5,12 @@ import CommentForm from "../components/CommentForm";
 import CommentItem from "../components/CommentItem";
 import NavBar from "../components/NavBar";
 import { getOnePost } from "../redux/actions/postActions";
+import location1 from "../assets/images/location1.png";
+import sfax from "../assets/images/sfax.jpg";
+import StoryCard from "../components/StoryCard";
+// import location2 from "../assets/images/location2.png";
+// import location3 from "../assets/images/location3.png";
+// import location4 from "../assets/images/location4.png";
 
 const Story = () => {
   const { post, loading } = useSelector((state) => state.postReducer);
@@ -17,9 +23,33 @@ const Story = () => {
   return (
     <div>
       <section>
-        <div className="container vh-100">
+        <div className="container">
           <NavBar color="white" />
-          <h1>One post</h1>
+          <section className="mt-5">
+            <div className="w-100">
+              <div className="col shadow-lg p-4 bg-body-tertiary rounded text-center d-flex flex-column justify-content-center">
+                {/* {JSON.stringify(post)} */}
+                <div className="row card my-3 text-danger p-3">
+                  {" "}
+                  {post?.title}{" "}
+                </div>
+                {/* {loading ? (
+            <h1> loading... </h1>
+          ) :} */}
+                <StoryCard index={0} />
+                <StoryCard index={1} />
+                <StoryCard index={2} />
+                <StoryCard index={3} />
+                <StoryCard index={4} />
+                <StoryCard index={5} />
+                <StoryCard index={6} />
+                <StoryCard index={7} />
+                <div className="row card my-3 text-danger p-3">Infos</div>
+              </div>
+            </div>
+          </section>
+
+          {/* <h1>One post</h1>
 
           {loading ? (
             <h1> loading... </h1>
@@ -32,18 +62,57 @@ const Story = () => {
                   <h4>To: {post?.destination}</h4>
                 </div>
               </div>
-              <div>
-                <CommentForm postId={post?._id} getOnePost={getOnePost} />
-                {post?.comments?.usercomments.map((comment) => (
-                  <CommentItem
-                    key={comment._id}
-                    comment={comment}
-                    postId={post?._id}
-                  />
-                ))}
+              
+            </div>
+          )} */}
+          {/* <section className="mt-5">
+            <div className="w-100">
+              <div className="col shadow-lg p-4 bg-body-tertiary rounded text-center d-flex flex-column justify-content-center">
+                <div className="row card my-3 text-danger p-3">Comments</div>
+                <div className="row">
+                  <div className="col">
+                    <CommentForm postId={post?._id} getOnePost={getOnePost} />
+                  </div>
+                  <div className="col">
+                    {post?.comments?.usercomments.map((comment) => (
+                      <CommentItem
+                        key={comment._id}
+                        comment={comment}
+                        postId={post?._id}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-          )}
+          </section> */}
+          <div className="accordion">
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="headingOne">
+                <button className="accordion-button" type="button">
+                  {post?.comments?.usercomments.length} Comments
+                </button>
+              </h2>
+              <div className="accordion-collapse collapse show">
+                <div className="accordion-body">
+                  <div className="row">
+                    <div className="col">
+                      <CommentForm postId={post?._id} getOnePost={getOnePost} />
+                    </div>
+                    <div className="col">
+                      {post?.comments?.usercomments.map((comment) => (
+                        <CommentItem
+                          key={comment._id}
+                          comment={comment}
+                          postId={post?._id}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

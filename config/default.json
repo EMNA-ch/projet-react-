@@ -1,4 +1,7 @@
 {
   "database": "mongodb+srv://Emna:0000@cluster0.ynemkqc.mongodb.net/project?retryWrites=true&w=majority",
-  "secret": "shhhh"
+  "secret": "shhhh",
+  "cloudinary_cloud_name": "dk2zsv5wo",
+  "cloudinary_api_key": "432486676465974",
+  "cloudinary_api_secret": "EH-z0tGl6_ip5rmoDF2r0inFoyw"
 }

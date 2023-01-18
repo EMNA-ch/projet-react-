@@ -3,8 +3,8 @@ const { check, validationResult } = require("express-validator");
 exports.postRules = () => [
   check("title", "Title is required").notEmpty(),
   check("location", "location is required").notEmpty(),
-  check("destination", "destination is required").notEmpty(),
   check("cost", "Cost is required").notEmpty(),
+  check("places", "Places is required").notEmpty(),
   check("transport", "Transport is required").notEmpty(),
   check("description", "Description is required").notEmpty(),
 ];

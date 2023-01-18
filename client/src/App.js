@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import ContactUs from "./pages/ContactUs";
@@ -22,6 +23,7 @@ const App = () => {
   }, [dispatch]);
   return (
     <div className="text-dark">
+      <ToastContainer progressStyle={0.5} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

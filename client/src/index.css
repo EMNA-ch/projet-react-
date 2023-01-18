@@ -82,3 +82,8 @@ nav a {
   text-decoration: none;
   color: #294665;
 }
+.img-border img {
+  object-fit: none;
+  padding: 25px;
+  border-radius: 50%;
+}

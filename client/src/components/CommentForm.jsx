@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addComment } from "../redux/actions/postActions";
 
-const CommentForm = ({ postId }) => {
+const CommentForm = ({ postId, authorID }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
   const handleComment = (e) => {
@@ -15,26 +15,22 @@ const CommentForm = ({ postId }) => {
   };
 
   return (
-    <div className="mb-3">
+    <div className="container">
       <form>
-        <label htmlFor="exampleFormControlTextarea1" className="form-label">
-          Add Comment
-        </label>
-        <div className="d-flex">
+        <div className="d-flex justify-content-center align-items-center mb-5">
           <textarea
-            className="form-control w-50"
+            placeholder="write a note..."
+            className="form-control"
             id="exampleFormControlTextarea1"
             rows="1"
             value={text}
             onChange={(e) => setText(e.target.value)}
           ></textarea>
 
-          <button
-            className="btn btn-outline-success mx-5"
+          <i
+            className="bi bi-pencil-square btn btn-outline-info mx-2"
             onClick={handleComment}
-          >
-            Comment
-          </button>
+          ></i>
         </div>
       </form>
     </div>

@@ -1,8 +1,16 @@
 const Post = require("../models/Post");
 
 exports.createPost = async (req, res) => {
-  const { title, location, destination, description, transport, cost } =
-    req.body;
+  const {
+    title,
+    location,
+    destination,
+    places,
+    description,
+    transport,
+    cost,
+    image,
+  } = req.body;
 
   try {
     // const user = await User.findById(req.user.id).select("-password");
@@ -14,9 +22,11 @@ exports.createPost = async (req, res) => {
       title,
       location,
       destination,
+      places,
       description,
       transport,
       cost,
+      image,
     });
     const post = await newPost.save();
     res.send(post);
@@ -58,8 +68,6 @@ exports.getUserPosts = async (req, res) => {
 };
 exports.updatePost = async (req, res) => {
   try {
-    const { title, location, destination, description, transport, cost } =
-      req.body;
     const post = await Post.findByIdAndUpdate(
       req.params.id,
       { ...req.body },

@@ -15,14 +15,19 @@ const postSchema = new schema(
     },
     location: {
       type: String,
-      // required: true,
-    },
-    destination: {
-      type: String,
       required: true,
     },
+    places: [
+      {
+        step: Number,
+        place: String,
+        image: String,
+        cost: String,
+        description: String,
+      },
+    ],
     image: {
-      type: String,
+      type: Object,
       // required: true,
     },
     transport: {
@@ -51,7 +56,12 @@ const postSchema = new schema(
             type: String,
             require: true,
           },
+          creation_date: {
+            type: Date,
+            default: Date.now(),
+          },
         },
+        { timestamps: true },
       ],
     },
     likes: {
