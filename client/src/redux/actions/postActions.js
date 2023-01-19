@@ -106,7 +106,6 @@ export const createPost = (newPost) => async (dispatch) => {
 };
 
 export const deletePost = (id, token) => async (dispatch) => {
-  console.log(token);
   const config = {
     headers: {
       Authorization: token,

@@ -19,6 +19,7 @@ const PostCard = ({ post, authorID }) => {
   const postTime = post.createdAt.slice(0, 10).split("-").reverse().join("-");
   return (
     <div className="card col shadow-lg p-3 btn bg-body-tertiary rounded m-2">
+      {/* {JSON.stringify(post)} */}
       <div className="card-header d-flex justify-content-between align-items-center bg-primary bg-opacity-25">
         {isAuth && (
           <i
@@ -52,7 +53,7 @@ const PostCard = ({ post, authorID }) => {
           <div className="col">
             <img
               className="shadow p-2 bg-body-tertiary"
-              src="/static/media/sfax.804867dda61a46ed4b8a.jpg"
+              src={post?.image?.url}
               width="200"
               height="200"
               alt="..."
@@ -78,10 +79,10 @@ const PostCard = ({ post, authorID }) => {
           )}
 
           <div className="col">
+            {/* {console.log(post?.places[post?.places?.length - 1]?.image?.url)} */}
             <img
               className="shadow p-2 bg-body-tertiary"
-              src="/static/media/sfax.804867dda61a46ed4b8a.jpg"
-              // src={post?.places[post?.places?.length - 1]?.image}
+              src={post?.places[post?.places?.length - 1]?.image?.url}
               width="200"
               height="200"
               alt="..."

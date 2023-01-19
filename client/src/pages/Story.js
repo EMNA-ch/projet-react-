@@ -12,7 +12,7 @@ import StoryCard from "../components/StoryCard";
 // import location4 from "../assets/images/location4.png";
 
 const Story = () => {
-  const { post } = useSelector((state) => state.postReducer);
+  const { post, loading } = useSelector((state) => state.postReducer);
   const dispatch = useDispatch();
   const params = useParams();
   useEffect(() => {
@@ -24,6 +24,7 @@ const Story = () => {
       <section>
         <div className="container">
           <NavBar color="white" />
+
           <section className="mt-5">
             <div className="w-100">
               <div className="col shadow-lg p-4 bg-body-tertiary rounded text-center d-flex flex-column justify-content-center">
@@ -31,17 +32,24 @@ const Story = () => {
                 <div className="row card my-3 text-danger p-3">
                   {post?.title}
                 </div>
-                {/* {loading ? (
-            <h1> loading... </h1>
-          ) :} */}
-                <StoryCard index={0} post={post} />
-                {/* <StoryCard index={1} />
-                <StoryCard index={2} />
-                <StoryCard index={3} />
-                <StoryCard index={4} />
-                <StoryCard index={5} />
-                <StoryCard index={6} />
-                <StoryCard index={7} /> */}
+
+                {loading ? (
+                  <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                ) : (
+                  <>
+                    <StoryCard index={0} post={post} />
+                    {post?.places?.map((place, i) => (
+                      <StoryCard
+                        key={place.image.public_id + 1}
+                        index={i + 1}
+                        post={place}
+                        places={post?.places}
+                      />
+                    ))}
+                  </>
+                )}
                 <div className="row card my-3 text-danger p-3">Comments</div>
               </div>
             </div>

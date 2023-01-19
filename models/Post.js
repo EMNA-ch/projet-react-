@@ -21,21 +21,21 @@ const postSchema = new schema(
       {
         step: Number,
         place: String,
-        image: String,
+        image: Object,
         cost: String,
         description: String,
       },
     ],
     image: {
       type: Object,
-      // required: true,
+      required: true,
     },
     transport: {
       type: String,
       required: true,
     },
     cost: {
-      type: Number,
+      type: String,
       required: true,
     },
     description: {

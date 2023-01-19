@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import { useDispatch } from "react-redux";
 import { createPost } from "../redux/actions/postActions";
 import FileUpload from "./FileUpload";
+import FileUploadPlace from "./FileUploadPlace";
 
 const initialState = {
   step: 0,
@@ -234,26 +235,11 @@ const PostForm = () => {
                         />
                       </div>
                     </div>
-                    <div className="row mb-3">
-                      <label className="col-sm-3 col-form-label">Image</label>
-                      <div className="col">
-                        <input
-                          className="form-control"
-                          type="file"
-                          id="formFile"
-                          onChange={(e) =>
-                            setNewPlace({
-                              ...newPlace,
-                              image: e.target.files[0],
-                            })
-                          }
-                        />
-                      </div>
-                    </div>
-                    {/* <FileUpload
-                      newPlace={newPlace.image}
+                    <FileUploadPlace
+                      newPlace={newPlace}
                       setNewPlace={setNewPlace}
-                    /> */}
+                    />
+
                     <div className="row mb-3">
                       <hr />
                     </div>
