@@ -16,7 +16,7 @@ const userSchema = new schema({
     required: true,
   },
   avatar: {
-    type: String,
+    type: Object,
   },
   userRole: {
     type: String,

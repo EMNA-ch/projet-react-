@@ -1,9 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteComment } from "../redux/actions/postActions";
 import avatar from "../assets/images/avatar.png";
 
 const CommentItem = ({ comment, postId }) => {
+  const { user } = useSelector((state) => state.userReducer);
+  const { post, loading } = useSelector((state) => state.postReducer);
   const dispatch = useDispatch();
   const handleDelete = (e) => {
     e.preventDefault();
@@ -21,11 +23,13 @@ const CommentItem = ({ comment, postId }) => {
         />
         <div className="small fw-light mx-4 text-muted">{comment.text}</div>
       </div>
-      <i
-        className="bi bi-trash-fill text-danger"
-        role="button"
-        onClick={handleDelete}
-      ></i>
+      {user?.id === post?.user?.id && (
+        <i
+          className="bi bi-trash-fill text-danger"
+          role="button"
+          onClick={handleDelete}
+        ></i>
+      )}
     </div>
   );
 };

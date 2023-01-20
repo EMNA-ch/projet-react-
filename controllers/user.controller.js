@@ -33,6 +33,7 @@ exports.Register = async (req, res) => {
       user: {
         id: user.id,
         email: user.email,
+        avatar: user.avatar,
         name: user.name,
       },
     });
@@ -62,6 +63,7 @@ exports.Login = async (req, res) => {
       user: {
         id: foundUser.id,
         email: foundUser.email,
+        avatar: foundUser.avatar,
         name: foundUser.name,
       },
     });
@@ -88,6 +90,7 @@ exports.verifyLogin = async (req, res) => {
         user: {
           id: user.id,
           email: user.email,
+          avatar: user.avatar,
           name: user.name,
         },
       });
@@ -104,6 +107,7 @@ exports.getVisitedProfile = async (req, res) => {
     res.send({
       id: visitedUser.id,
       name: visitedUser.name,
+      avatar: visitedUser.avatar,
       email: visitedUser.email,
     });
   } catch (error) {
@@ -127,9 +131,8 @@ exports.updateProfile = async (req, res) => {
       id: userProfile._id,
       name: userProfile.name,
       email: userProfile.email,
+      avatar: userProfile.avatar,
     });
-    // id: userProfile._id,
-    // name: userProfile.name,
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -19,6 +19,7 @@ const verifyAuth = async (req, res, next) => {
       return res.status(400).json({ msg: "unauthorized!" });
     } else {
       req.user = user;
+      // console.log(req.user);
       next();
     }
   } catch (error) {

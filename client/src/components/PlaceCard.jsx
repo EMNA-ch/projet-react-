@@ -1,6 +1,7 @@
 import React from "react";
+import FileUpdateImagePlace from "./FileUpdateImagePlace";
 
-const PlaceCard = ({ place, setPlace }) => {
+const PlaceCard = ({ place, setPlaces, places }) => {
   return (
     <>
       <div className="row mb-3">
@@ -22,9 +23,20 @@ const PlaceCard = ({ place, setPlace }) => {
           <input
             type="text"
             className="form-control"
-            value={place.location}
+            value={place.place}
             required
-            onChange={(e) => setPlace(...place, { location: e.target.value })}
+            onChange={(e) => {
+              setPlaces(
+                [...places].map((object) => {
+                  if (object.step === place.step) {
+                    return {
+                      ...object,
+                      place: e.target.value,
+                    };
+                  } else return object;
+                })
+              );
+            }}
           />
         </div>
       </div>
@@ -34,11 +46,20 @@ const PlaceCard = ({ place, setPlace }) => {
           <input
             type="text"
             className="form-control"
-            value={place.description}
+            value={place?.description}
             required
-            onChange={(e) =>
-              setPlace(...place, { description: e.target.value })
-            }
+            onChange={(e) => {
+              setPlaces(
+                [...places].map((object) => {
+                  if (object.step === place.step) {
+                    return {
+                      ...object,
+                      description: e.target.value,
+                    };
+                  } else return object;
+                })
+              );
+            }}
           />
         </div>
       </div>
@@ -48,18 +69,28 @@ const PlaceCard = ({ place, setPlace }) => {
           <input
             type="text"
             className="form-control"
-            value={place.cost}
+            value={place?.cost}
             required
-            onChange={(e) => setPlace([...place, { cost: e.target.value }])}
+            onChange={(e) => {
+              setPlaces(
+                [...places].map((object) => {
+                  if (object.step === place.step) {
+                    return {
+                      ...object,
+                      cost: e.target.value,
+                    };
+                  } else return object;
+                })
+              );
+            }}
           />
         </div>
       </div>
-      <div className="row mb-3">
-        <label className="col-sm-3 col-form-label">Image</label>
-        <div className="col">
-          <input className="form-control" type="file" id="formFile" />
-        </div>
-      </div>
+      <FileUpdateImagePlace
+        place={place}
+        setPlaces={setPlaces}
+        places={places}
+      />
       <div className="row mb-3">
         <hr />
       </div>

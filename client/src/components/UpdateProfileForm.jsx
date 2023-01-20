@@ -4,12 +4,13 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../redux/actions/userActions";
+import FileUpload from "./FileUpload";
 
 const UpdateProfileFrom = ({ user }) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState(user?.name);
   const [email, setEmail] = useState(user?.email);
-  //   const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState(user?.avatar);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
@@ -18,8 +19,9 @@ const UpdateProfileFrom = ({ user }) => {
     const updatedProfile = {
       name,
       email,
-      //avatar,
+      avatar,
     };
+    console.log(updatedProfile);
     dispatch(updateProfile(updatedProfile, user.id));
     handleClose();
   };
@@ -70,9 +72,13 @@ const UpdateProfileFrom = ({ user }) => {
                   />
                 </div>
               </div>
+              <FileUpload image={avatar} setImage={setAvatar} />
               {/* <div className="row  mb-3">
-                <Form.Label htmlFor="inputName" className="col-sm-3 col-form-label">
-                  Name
+                <Form.Label
+                  htmlFor="inputName"
+                  className="col-sm-3 col-form-label"
+                >
+                  Image
                 </Form.Label>
                 <div className="col">
                   <Form.Control

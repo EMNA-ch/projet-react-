@@ -10,7 +10,6 @@ const Posts = () => {
     dispatch(getPosts());
   }, [dispatch]);
   const { posts, loading } = useSelector((state) => state.postReducer);
-  // console.log(posts);
   return (
     <div>
       <section>
@@ -23,8 +22,8 @@ const Posts = () => {
                   <h1> loading... </h1>
                 ) : (
                   <div>
-                    {posts.map((el, i) => (
-                      <PostCard post={el} key={i} />
+                    {posts.map((post, i) => (
+                      <PostCard post={post} key={post._id} />
                     ))}
                   </div>
                 )}

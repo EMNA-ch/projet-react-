@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import loginPic from "../assets/images/login-pic.png";
+import FileUpload from "../components/FileUpload";
 import NavBar from "../components/NavBar";
 import { register } from "../redux/actions/userActions";
 
@@ -9,6 +10,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [avatar, setAvatar] = useState("");
   const { user, loading, errors } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
@@ -18,6 +20,7 @@ const Register = () => {
       name,
       email,
       password,
+      avatar,
     };
     dispatch(register(newUser));
   };
@@ -82,11 +85,10 @@ const Register = () => {
                           onChange={(e) => setEmail(e.target.value)}
                         />
                         <h6 style={{ color: "red" }}>
-                          {" "}
                           {
                             errors?.errors?.find((el) => el.param === "email")
                               ?.msg
-                          }{" "}
+                          }
                         </h6>
                       </div>
                     </div>
@@ -114,6 +116,7 @@ const Register = () => {
                         </h6>
                       </div>
                     </div>
+                    <FileUpload image={avatar} setImage={setAvatar} />
                     <div
                       className="d-flex justify-content-center align-items-center mt-5"
                       style={{ gap: "20px" }}

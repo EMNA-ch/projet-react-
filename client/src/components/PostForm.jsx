@@ -20,12 +20,12 @@ const PostForm = () => {
   const dispatch = useDispatch();
   const [item, setItem] = useState([]);
   const [show, setShow] = useState(false);
-  const [title, setTitle] = useState("");
-  const [location, setLocation] = useState("");
+  const [title, setTitle] = useState("Party");
+  const [location, setLocation] = useState("Sfax");
   // const [destination, setDestination] = useState("");
-  const [description, setDescription] = useState("");
-  const [transport, setTransport] = useState("");
-  const [cost, setCost] = useState("");
+  const [description, setDescription] = useState("Join Family Party");
+  const [transport, setTransport] = useState("car");
+  const [cost, setCost] = useState("5000");
   const [image, setImage] = useState({});
   const [places, setPlaces] = useState([]);
   const [newPlace, setNewPlace] = useState(initialState);

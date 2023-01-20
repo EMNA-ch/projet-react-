@@ -4,8 +4,10 @@ import Resizer from "react-image-file-resizer";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const FileUpload = ({ image, setImage }) => {
+const FileUpdateImagePlace = ({ place, places, setPlaces }) => {
   const [loading, setLoading] = useState(false);
+  //   console.log("places", places);
+  //   console.log("place", place);
   const fileUploadAndResize = (e) => {
     //resize image
     let file = e.target.files[0];
@@ -26,7 +28,16 @@ const FileUpload = ({ image, setImage }) => {
             if (res) {
               setLoading(false);
               toast.success("Image Uploded");
-              setImage(res.data);
+              setPlaces(
+                [...places].map((object) => {
+                  if (object.step === place.step) {
+                    return {
+                      ...object,
+                      image: res.data,
+                    };
+                  } else return object;
+                })
+              );
             }
           } catch (error) {
             setLoading(false);
@@ -43,14 +54,23 @@ const FileUpload = ({ image, setImage }) => {
       .post("/api/cloudinary/remove", {
         public_id,
       })
-      .then(() => {
+      .then((res) => {
         setLoading(false);
-        setImage("");
+        setPlaces(
+          [...places].map((object) => {
+            if (object.step === place.step) {
+              return {
+                ...object,
+                image: "",
+              };
+            } else return object;
+          })
+        );
         toast.info("Image Removed");
       })
       .catch((error) => {
         setLoading(false);
-        toast.error(error.msg);
+        console.log(error);
       });
   };
 
@@ -76,19 +96,19 @@ const FileUpload = ({ image, setImage }) => {
           </>
         )}
       </div>
-      {image.url && (
+      {place?.image?.url && (
         <div className="my-3 position-relative">
           <img
             className="shadow p-1 bg-body-tertiary border border-danger rounded-pill"
-            src={image.url}
+            src={place?.image?.url}
             width={100}
             height={100}
             alt="..."
           />
           <span
             className="position-absolute btn top-0 start-10 translate-middle badge rounded-pill bg-danger"
-            key={image.public_id}
-            onClick={() => handleRemove(image.public_id)}
+            key={place?.image?.public_id}
+            onClick={() => handleRemove(place?.image?.public_id)}
           >
             X
           </span>
@@ -98,4 +118,4 @@ const FileUpload = ({ image, setImage }) => {
   );
 };
 
-export default FileUpload;
+export default FileUpdateImagePlace;

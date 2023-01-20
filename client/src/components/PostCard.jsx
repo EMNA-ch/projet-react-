@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import avatar from "../assets/images/avatar.png";
 import { deletePost } from "../redux/actions/postActions";
 import UpdateForm from "./UpdateForm";
 
 const PostCard = ({ post, authorID }) => {
   const [show, setShow] = useState(false);
+  // console.log(post);
   const { user, token } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
   const handleShow = () => setShow(true);
@@ -31,7 +31,7 @@ const PostCard = ({ post, authorID }) => {
         <small>
           <Link to={`/visitProfile/${post.user.id}`}>
             <img
-              src={avatar}
+              src={post?.user?.avatar?.url}
               className="rounded-circle border border-danger p-1"
               width={30}
               height={30}

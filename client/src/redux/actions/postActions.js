@@ -72,7 +72,6 @@ export const getOnePost = (id) => async (dispatch) => {
       payload: res.data,
     });
   } catch (error) {
-    console.log("error", error);
     dispatch({
       type: GET_ONE_POST_FAIL,
       payload: error.response.data,

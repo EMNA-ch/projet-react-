@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 const FileUploadPlace = ({ newPlace, setNewPlace }) => {
   const [loading, setLoading] = useState(false);
   const fileUploadAndResize = (e) => {
-    console.log(newPlace);
     //resize image
     let file = e.target.files[0];
     if (file) {

@@ -6,7 +6,6 @@ import { getUserPosts } from "../redux/actions/postActions";
 import PostCard from "../components/PostCard";
 import PostForm from "../components/PostForm";
 import UpdateProfileFrom from "../components/UpdateProfileForm";
-import { VerifyLogin } from "../redux/actions/verifyLogin";
 // import UpdateProfile from "../components/UpdateProfileForm";
 
 const Profile = () => {
@@ -15,15 +14,17 @@ const Profile = () => {
 
   const dispatch = useDispatch();
   const params = useParams();
+
   // visited profile
   // useEffect(() => {
   //   dispatch(getVisitedUser(params.id));
   // }, []);
   // user profile
+
   useEffect(() => {
-    dispatch(VerifyLogin());
     dispatch(getUserPosts(params.id));
   }, [dispatch, params.id]);
+
   return (
     <div>
       <section className="container">
@@ -42,16 +43,17 @@ const Profile = () => {
                       <div className="row">
                         <div className="col-md-2">
                           <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-FTr8wwpK2fQ9E1h9uhr0avZSmuVKGAnb6X5Dmal-_Nhvw-kJ&usqp=CAU"
+                            className="shadow p-1 bg-body-tertiary border border-danger rounded-pill"
+                            src={user?.avatar?.url}
+                            width={100}
+                            height={100}
                             alt="..."
-                            width="130"
-                            className="rounded mb-2 img-thumbnail"
                           />
                         </div>
                         <div className="col">
                           <div className="media-body mb-5 text-dark">
                             <h4 className="mt-0 mb-0">
-                              {user && user.name.toUpperCase()}
+                              {user && user?.name?.toUpperCase()}
                             </h4>
                           </div>
                         </div>
@@ -84,8 +86,12 @@ const Profile = () => {
                   ) : (
                     <div>
                       {posts.length ? (
-                        posts.map((el, i) => (
-                          <PostCard post={el} key={i} authorID={params.id} />
+                        posts.map((post) => (
+                          <PostCard
+                            post={post}
+                            key={post._id}
+                            authorID={params.id}
+                          />
                         ))
                       ) : (
                         <h6>No Posts</h6>

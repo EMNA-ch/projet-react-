@@ -24,7 +24,6 @@ const Story = () => {
       <section>
         <div className="container">
           <NavBar color="white" />
-
           <section className="mt-5">
             <div className="w-100">
               <div className="col shadow-lg p-4 bg-body-tertiary rounded text-center d-flex flex-column justify-content-center">
@@ -32,7 +31,6 @@ const Story = () => {
                 <div className="row card my-3 text-danger p-3">
                   {post?.title}
                 </div>
-
                 {loading ? (
                   <div className="spinner-border text-primary" role="status">
                     <span className="visually-hidden">Loading...</span>
@@ -42,7 +40,7 @@ const Story = () => {
                     <StoryCard index={0} post={post} />
                     {post?.places?.map((place, i) => (
                       <StoryCard
-                        key={place.image.public_id + 1}
+                        key={place._id}
                         index={i + 1}
                         post={place}
                         places={post?.places}

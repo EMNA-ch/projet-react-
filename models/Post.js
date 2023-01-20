@@ -7,7 +7,7 @@ const postSchema = new schema(
     user: {
       id: String,
       name: String,
-      // ref: "user",
+      avatar: Object,
     },
     title: {
       type: String,

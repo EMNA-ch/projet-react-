@@ -101,7 +101,6 @@ export const updateProfile = (updatedProfile, id) => async (dispatch) => {
       updatedProfile,
       config
     );
-    console.log(res.data);
     dispatch({
       type: UPDATE_PROFILE_SUCCESS,
       payload: res.data,

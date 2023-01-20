@@ -13,11 +13,11 @@ exports.createPost = async (req, res) => {
   } = req.body;
 
   try {
-    // const user = await User.findById(req.user.id).select("-password");
     const newPost = new Post({
       user: {
         id: req.user.id,
         name: req.user.name,
+        avatar: req.user.avatar,
       },
       title,
       location,
