@@ -10,7 +10,7 @@ import { getVisitedUser } from "../redux/actions/userActions";
 const VisitedProfile = () => {
   const { posts, loading } = useSelector((state) => state.postReducer);
   const { visitedUser, user } = useSelector((state) => state.userReducer);
-
+  // console.log(visitedUser);
   const dispatch = useDispatch();
   const params = useParams();
   // visited profile
@@ -32,13 +32,13 @@ const VisitedProfile = () => {
           <div className="row py-5 px-4 ">
             <div className="col mx-auto">
               <div className="bg-white shadow rounded overflow-hidden">
-                <div className="px-4 pt-0 pb-4 cover">
+                <div className="px-4 pt-0 pb-4 cover bg-primary bg-opacity-50">
                   <div className="media align-items-end profile-head">
                     <div className="profile container">
                       <div className="row">
                         <div className="col-md-2">
                           <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ-FTr8wwpK2fQ9E1h9uhr0avZSmuVKGAnb6X5Dmal-_Nhvw-kJ&usqp=CAU"
+                            src={visitedUser?.avatar?.url}
                             alt="..."
                             width="130"
                             className="rounded mb-2 img-thumbnail"
@@ -55,29 +55,11 @@ const VisitedProfile = () => {
                     </div>
                   </div>
                 </div>
-                <div className="bg-light p-4 d-flex justify-content-center text-center mt-3">
-                  <ul className="list-inline mb-0">
-                    <li className="list-inline-item">
-                      <h5 className="font-weight-bold mb-0 d-block">100</h5>
-                      <small className="text-muted">
-                        <i className="fas fa-image mr-1"></i>Points Gained
-                      </small>
-                    </li>
-                    <li className="list-inline-item">
-                      <h5 className="font-weight-bold mb-0 d-block">50</h5>
-                      <small className="text-muted">
-                        <i className="fas fa-user mr-1"></i>Posted Designs
-                      </small>
-                    </li>
-                    <li className="list-inline-item">
-                      <h5 className="font-weight-bold mb-0 d-block">25</h5>
-                      <small className="text-muted">
-                        <i className="fas fa-user mr-1"></i>Won Challenges{" "}
-                      </small>
-                    </li>
-                  </ul>
+                <div>
+                  <br />
+                  <br />
                 </div>
-                <div className="px-4 py-3">
+                <div className="p-3">
                   <h5 className="mb-0">About</h5>
                   <div className="p-4 rounded shadow-sm bg-light">
                     <p className="font-italic mb-0">
@@ -86,13 +68,6 @@ const VisitedProfile = () => {
                   </div>
                 </div>
                 <div className="py-4 px-4">
-                  <div className="d-flex align-items-center justify-content-between mb-3">
-                    <h5 className="mb-0">Recently shared posts</h5>
-                    <a href="/" className="btn btn-link text-muted">
-                      Show all
-                    </a>
-                  </div>
-                  {/* <div className="col shadow-lg p-4 bg-body-tertiary rounded text-center d-flex flex-column justify-content-center"> */}
                   <div className="col shadow-lg p-4 bg-body-tertiary rounded text-center d-flex flex-column justify-content-center">
                     {loading ? (
                       <h1> loading... </h1>

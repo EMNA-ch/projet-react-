@@ -7,6 +7,7 @@ const CardStory = ({ post }) => {
       <div className="input-group mb-3">
         <div
           className="card p-2 d-flex justify-conten-center bg-primary bg-opacity-50"
+          style={{ width: "120px" }}
           id="button-addon1"
         >
           Place
@@ -23,6 +24,7 @@ const CardStory = ({ post }) => {
       <div className="input-group mb-3">
         <div
           className="card p-2 d-flex justify-conten-center bg-primary bg-opacity-50"
+          style={{ width: "120px" }}
           id="button-addon1"
         >
           Cost
@@ -39,6 +41,7 @@ const CardStory = ({ post }) => {
       <div className="input-group mb-3">
         <div
           className="card p-2 d-flex justify-conten-center bg-primary bg-opacity-50"
+          style={{ width: "120px" }}
           id="button-addon1"
         >
           Description

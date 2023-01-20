@@ -35,7 +35,6 @@ const Profile = () => {
         ) : (
           <div className="row py-5 px-4 ">
             <div className="col mx-auto">
-              {/* <!-- Profile widget --> */}
               <div className="bg-white shadow rounded overflow-hidden bg-card">
                 <div className="px-4 pt-0 pb-4 cover bg-primary bg-opacity-50">
                   <div className="media align-items-end profile-head">
@@ -64,7 +63,10 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
-                <div className="bg-light p-4 d-flex justify-content-center text-center"></div>
+                <div>
+                  <br />
+                  <br />
+                </div>
                 <div className="p-3">
                   <h5 className="mb-0">About</h5>
                   <div className="p-4 rounded shadow-sm bg-light">

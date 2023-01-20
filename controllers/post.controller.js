@@ -137,6 +137,7 @@ exports.commentPost = async (req, res) => {
     user: req.user.id,
     name: req.user.name,
     text: req.body.text,
+    avatar: req.user.avatar,
   };
   try {
     const post = await Post.findById(req.params.id);

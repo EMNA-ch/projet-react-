@@ -56,6 +56,10 @@ const postSchema = new schema(
             type: String,
             require: true,
           },
+          avatar: {
+            type: Object,
+            require: true,
+          },
           creation_date: {
             type: Date,
             default: Date.now(),

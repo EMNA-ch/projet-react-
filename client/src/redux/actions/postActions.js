@@ -172,6 +172,7 @@ export const addComment = (postId, newComment) => async (dispatch) => {
       newComment,
       config
     );
+
     dispatch({
       type: ADD_COMMENT_SUCCESS,
       payload: res.data,
