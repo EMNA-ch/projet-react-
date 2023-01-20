@@ -161,7 +161,7 @@ exports.deleteComment = async (req, res) => {
     }
 
     //check that the user is the owner of the comment
-    if (comment.user !== req.user.id) {
+    if (comment.user !== req.user.id && post.user.id !== req.user.id) {
       return res.status(401).json({ msg: "user not authorized" });
     }
 

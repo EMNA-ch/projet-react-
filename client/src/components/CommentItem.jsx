@@ -23,13 +23,19 @@ const CommentItem = ({ comment, postId }) => {
         />
         <div className="small fw-light mx-4 text-muted">{comment.text}</div>
       </div>
-      {user?.id === post?.user?.id && (
+      {user?.id === post?.user?.id ? (
         <i
           className="bi bi-trash-fill text-danger"
           role="button"
           onClick={handleDelete}
         ></i>
-      )}
+      ) : user?.id === comment.user ? (
+        <i
+          className="bi bi-trash-fill text-danger"
+          role="button"
+          onClick={handleDelete}
+        ></i>
+      ) : null}
     </div>
   );
 };
