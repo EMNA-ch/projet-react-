@@ -21,6 +21,9 @@ import {
   GET_PROFILE,
   GET_PROFILE_FAIL,
   GET_PROFILE_SUCCESS,
+  UPDATE_COMMENT,
+  UPDATE_COMMENT_FAIL,
+  UPDATE_COMMENT_SUCCESS,
   UPDATE_POST,
   UPDATE_POST_FAIL,
   UPDATE_POST_SUCCESS,
@@ -210,3 +213,33 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
     });
   }
 };
+
+export const updateComment =
+  (updatedText, postId, commentId) => async (dispatch) => {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    dispatch({
+      type: UPDATE_COMMENT,
+    });
+    try {
+      const res = await axios.put(
+        `/api/post/comment/${postId}/${commentId}`,
+        updatedText,
+        config
+      );
+      dispatch({
+        type: UPDATE_COMMENT_SUCCESS,
+        payload: res.data,
+      });
+    } catch (error) {
+      // console.log(error);
+      dispatch({
+        type: UPDATE_COMMENT_FAIL,
+        payload: error.response.data,
+      });
+    }
+  };

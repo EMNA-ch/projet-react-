@@ -156,7 +156,7 @@ exports.deleteComment = async (req, res) => {
     const comment = post.comments.usercomments.find(
       (comment) => comment.id === req.params.comment_id
     );
-    console.log(comment);
+    // console.log(comment);
     if (!comment) {
       res.status(404).json({ msg: "comment does not exist" });
     }
@@ -177,5 +177,20 @@ exports.deleteComment = async (req, res) => {
   } catch (error) {
     // console.error(error.message);
     res.status(500).send("server error");
+  }
+};
+
+exports.updateComment = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    const comment = post.comments.usercomments.id(req.params.comment_id);
+    comment["text"] = req.body.text;
+    await post.save();
+    if (comment.user !== req.user.id) {
+      return res.status(401).json({ msg: "user not authorized" });
+    }
+    res.send(post.comments.usercomments);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };

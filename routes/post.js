@@ -10,6 +10,7 @@ const {
   commentPost,
   deleteComment,
   getUserPosts,
+  updateComment,
 } = require("../controllers/post.controller");
 const {
   postRules,
@@ -36,4 +37,5 @@ router.post(
   commentPost
 );
 router.delete("/comment/:id/:comment_id", verifyAuth, deleteComment);
+router.put("/comment/:id/:comment_id", verifyAuth, updateComment);
 module.exports = router;

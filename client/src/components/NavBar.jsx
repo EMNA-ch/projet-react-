@@ -31,6 +31,15 @@ const NavBar = ({ color }) => {
             <NavLink to="/contactus">ContactUs</NavLink>
             <NavLink to="/faq">FAQ </NavLink>
             {user && <NavLink to={`/profile/${user.id}`}>Profile </NavLink>}
+            <div>
+              <img
+                className="shadow p-1 bg-body-tertiary border border-danger rounded-pill"
+                src={user?.avatar?.url}
+                width={40}
+                height={40}
+                alt="..."
+              />
+            </div>
           </div>
           <div className="col text-end">
             <NavLink to="/login" className="sign_in">

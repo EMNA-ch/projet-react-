@@ -1,10 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteComment } from "../redux/actions/postActions";
+import UpdateComment from "./UpdateComment";
 
 const CommentItem = ({ comment, postId }) => {
   const { user } = useSelector((state) => state.userReducer);
-  const { post, loading } = useSelector((state) => state.postReducer);
+  const { post } = useSelector((state) => state.postReducer);
   // console.log(post);
   const dispatch = useDispatch();
   const handleDelete = (e) => {
@@ -26,19 +27,24 @@ const CommentItem = ({ comment, postId }) => {
         </div>
         <div className="small fw-light mx-4 text-muted">{comment.text}</div>
       </div>
-      {user?.id === post?.user?.id ? (
-        <i
-          className="bi bi-trash-fill text-danger"
-          role="button"
-          onClick={handleDelete}
-        ></i>
-      ) : user?.id === comment.user ? (
-        <i
-          className="bi bi-trash-fill text-danger"
-          role="button"
-          onClick={handleDelete}
-        ></i>
-      ) : null}
+      <div className="d-flex">
+        {user?.id === post?.user?.id ? (
+          <i
+            className="bi bi-trash-fill text-danger mx-3"
+            role="button"
+            onClick={handleDelete}
+          ></i>
+        ) : user?.id === comment.user ? (
+          <i
+            className="bi bi-trash-fill text-danger"
+            role="button"
+            onClick={handleDelete}
+          ></i>
+        ) : null}
+        {user?.id === comment?.user && (
+          <UpdateComment comment={comment} postId={postId} />
+        )}
+      </div>
     </div>
   );
 };

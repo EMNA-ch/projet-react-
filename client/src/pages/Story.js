@@ -13,6 +13,7 @@ import StoryCard from "../components/StoryCard";
 
 const Story = () => {
   const { post, loading } = useSelector((state) => state.postReducer);
+  console.log("post", post);
   const dispatch = useDispatch();
   const params = useParams();
   useEffect(() => {

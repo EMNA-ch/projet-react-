@@ -20,6 +20,9 @@ import {
   GET_PROFILE,
   GET_PROFILE_FAIL,
   GET_PROFILE_SUCCESS,
+  UPDATE_COMMENT,
+  UPDATE_COMMENT_FAIL,
+  UPDATE_COMMENT_SUCCESS,
   UPDATE_POST,
   UPDATE_POST_FAIL,
   UPDATE_POST_SUCCESS,
@@ -37,6 +40,7 @@ const postReducer = (state = initialState, { type, payload }) => {
     case CREATE_POST:
     case UPDATE_POST:
     case ADD_COMMENT:
+    case UPDATE_COMMENT:
       return {
         ...state,
         loading: true,
@@ -45,6 +49,18 @@ const postReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         posts: payload,
+        loading: false,
+      };
+    case UPDATE_COMMENT_SUCCESS:
+      return {
+        ...state,
+        post: { ...state.post, comments: { usercomments: payload } },
+        loading: false,
+      };
+    case UPDATE_COMMENT_FAIL:
+      return {
+        ...state,
+        errors: payload,
         loading: false,
       };
     case UPDATE_POST_SUCCESS:
@@ -126,7 +142,9 @@ const postReducer = (state = initialState, { type, payload }) => {
     case ADD_COMMENT_SUCCESS:
       return {
         ...state,
-        post: { ...state.post, comments: { usercomments: payload } },
+        post: state.post.comments.usercomments.map((el) =>
+          el._id === el.payload ? payload.data : el
+        ),
         errors: null,
         loading: false,
       };
